@@ -11,6 +11,7 @@ public class Cliente extends Thread {
         this.numero=n;
     }
     public void run() {
+
         var res = p.prenota(this.richiesta,this.evento); 
         if (res) {
             System.out.println(this.numero+"   "+res+ " Prenotazione di : " + richiesta + " Posti a : "+this.evento+", posti disponibili: "+ p.PostiDisponibili(this.evento));

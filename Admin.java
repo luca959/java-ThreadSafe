@@ -10,25 +10,37 @@ public class Admin  extends Thread {
 
     public void run() {
         //esegue la sequenza Crea, pausa, Aggiungi, pausa, Chiudi per diversi 
-        p.Crea(this.nome_evento,this.num_posti);
         try 
-        {
+        {           
+            p.Crea(this.nome_evento,this.num_posti);
             Thread.sleep(2000);
         } 
         catch(InterruptedException e)
         {
-             // this part is executed when an exception (in this example InterruptedException) occurs
+            e.printStackTrace();
         }
-        p.Aggiungi(this.nome_evento,this.num_posti);
+
         try 
         {
+            p.Aggiungi(this.nome_evento,this.num_posti);
             Thread.sleep(2000);
         } 
         catch(InterruptedException e)
         {
-             // this part is executed when an exception (in this example InterruptedException) occurs
+            e.printStackTrace();
         }
-        System.out.println("Cinema: "+  p.PostiDisponibili("Cinema")+" Teatro "+p.PostiDisponibili("Teatro")+" Stadio: "+ p.PostiDisponibili("Stadio"));
+
+        try 
+        {
+            p.Chiudi("Piscina");
+            Thread.sleep(2000);
+        } 
+        catch(InterruptedException e)
+        {
+            e.printStackTrace();
+        }
+
+
     
 
 

@@ -1,8 +1,6 @@
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.HashMap;
 public class GestioneEventi{
-    private int disponibili;
-    private String nome;
+
     private ConcurrentHashMap<String, Integer> Eventi;
 
     public GestioneEventi(){
@@ -15,10 +13,11 @@ public class GestioneEventi{
         System.out.println(x+" "+y+" Aggiunti");
     }
 
-    public void Aggiungi(String x, int y){
-        int value=Eventi.get(x);
-        if (Eventi.get(x) != null)
+    public synchronized void Aggiungi(String x, int y){
+        if (Eventi.get(x) != null){
             Eventi.computeIfPresent(x, (key, oldValue) -> oldValue+y);
+   
+        }
         System.out.println(x+" "+Eventi.get(x)+" Modificati");
 
     }
@@ -32,7 +31,9 @@ public class GestioneEventi{
                 System.out.println("SI");
                 return true;
             }
-            return false;
+            else{
+                return false;
+            }
         
             }
             return false;
