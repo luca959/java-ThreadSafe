@@ -32,8 +32,6 @@ public class GestioneEventi{
             if(posti >= richiesta){
                 posti -= richiesta;
                 Eventi.replace(NomeEvento,posti);
-
-                System.out.println("SI");
                 return true;
             }
                 return false;
@@ -57,8 +55,6 @@ public class GestioneEventi{
             Eventi.remove(x,value);
             System.out.println("Evento rimosso con successo");
         }
-        else{
-            System.out.println("Impossibile eliminare un evento che non esiste");
-        }   
+
     }
 }
