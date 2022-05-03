@@ -16,7 +16,7 @@ public class GestioneEventi{
     public synchronized void Aggiungi(String x, int y){
         if (Eventi.get(x) != null){
             Eventi.computeIfPresent(x, (key, oldValue) -> oldValue+y);
-   
+            notifyAll();
         }
         System.out.println(x+" "+Eventi.get(x)+" Modificati");
 
@@ -24,6 +24,11 @@ public class GestioneEventi{
     public synchronized Boolean prenota(int richiesta,String NomeEvento) {
         if(Eventi.get(NomeEvento)!=null){
             int posti=Eventi.get(NomeEvento);
+            while(!(posti >= richiesta)){
+                try { wait(); } catch(InterruptedException e){}
+                posti=Eventi.get(NomeEvento);
+
+            }
             if(posti >= richiesta){
                 posti -= richiesta;
                 Eventi.replace(NomeEvento,posti);
@@ -31,10 +36,7 @@ public class GestioneEventi{
                 System.out.println("SI");
                 return true;
             }
-            else{
                 return false;
-            }
-        
             }
             return false;
     }

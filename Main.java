@@ -10,6 +10,8 @@ public class Main {
         Cliente t1=new Cliente(P,3,1,"Teatro");
         Cliente t2=new Cliente(P,10,2,"Cinema");
         Cliente t3=new Cliente(P,5,3,"Stadio");
+        Cliente t4=new Cliente(P,10,2,"Cinema");
+
 
         a1.start();
         a2.start();
@@ -19,6 +21,7 @@ public class Main {
         t1.start();
         t2.start();
         t3.start();
+        t4.start();
     
         a1.join();
         a2.join();
@@ -28,6 +31,7 @@ public class Main {
         t1.join();
         t2.join();
         t3.join();
+        t4.join();
         P.ListaEventi();
 
 
